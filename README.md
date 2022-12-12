@@ -1,7 +1,8 @@
-# React-App Template v1.0.0
-GDSC NIT Silchar's Template for a React + SASS app.
+# React-JS-App Template v1.0.0
+GDSC NIT Silchar's Template for a JS + React + SASS app.
 
 ## Features, Tools and Technologies
+- JavaScript
 - React 18
 - React Router 6
 - SASS Modules
