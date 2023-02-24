@@ -10,7 +10,8 @@
     "lint": "eslint . --ext .jsx --ext .js --fix",
     "pretty": "prettier --write .",
     "precommit": "lint-staged",
-    "preinstall": "npx only-allow pnpm"
+    "preinstall": "npx only-allow pnpm",
+    "prepare": "simple-git-hooks"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^2.2.0",
