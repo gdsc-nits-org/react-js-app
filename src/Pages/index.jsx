@@ -1,3 +1,4 @@
 import Home from "./Home/Home";
+import Error from "./Error/Error";
 
-export { Home };
+export { Home, Error };
