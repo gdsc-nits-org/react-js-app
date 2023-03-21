@@ -11,4 +11,3 @@ GDSC NIT Silchar's Template for a JS + React + SASS app.
 - Prettier
 - Very Strict ESLint
 - Auto Lint and Pretty on commit using simple-git-hooks (compatible with Windows unlike husky)
-- Deploy preview on all PRs (creates an extra gh-pages branch)
