@@ -1,10 +1,16 @@
 import { Button } from "../../Components";
-import { useFetch } from "../../Hooks";
+import { useFetchOnAction } from "../../Hooks";
 
 import style from "./Home.module.scss";
 
 const Home = () => {
-  const { data, error, loading } = useFetch("/db/demo.json");
+  const [fetchData, fetchFunc] = useFetchOnAction();
+
+  const { data, loading, error } = fetchData;
+
+  const handleClick = () => {
+    fetchFunc("/db/demo.json");
+  };
 
   return (
     <main className={style.home}>
@@ -13,8 +19,10 @@ const Home = () => {
       ) : (
         <>
           <h1>Home Page</h1>
-          {error ? <h2 className={style.error}>{error}</h2> : <h2>{data.msg}</h2>}
-          <Button type="button">Health Check</Button>
+          {error ? <h2 className={style.error}>{error}</h2> : <h2>{data?.msg}</h2>}
+          <Button type="button" onClick={handleClick}>
+            Health Check
+          </Button>
         </>
       )}
     </main>

@@ -1,37 +1,5 @@
 import { useState, useEffect } from "react";
-
-/**
- * @param {string} url
- * @param {RequestInit?} options
- * @param {()=>any} setfetchDataObject
- */
-const fetchData = async (url, setFetchDataObject, options = {}) => {
-  try {
-    const response = await fetch(url, options);
-
-    if (!response.ok) {
-      return setFetchDataObject({
-        error: response.statusText,
-        data: null,
-        loading: false,
-      });
-    }
-
-    const data = await response.json();
-
-    return setFetchDataObject({
-      error: null,
-      data,
-      loading: false,
-    });
-  } catch (err) {
-    return setFetchDataObject({
-      error: err.message,
-      data: null,
-      loading: false,
-    });
-  }
-};
+import { fetchData } from "./common";
 
 /**
  * @param {string} url
@@ -41,7 +9,15 @@ const fetchData = async (url, setFetchDataObject, options = {}) => {
  *    error: string;
  *    loading: boolean;
  * }}
- * @description This custom hook allows you to fetch data from a given URL and returns React states to manage the data
+ * @description This custom hook allows you to fetch data from a given URL and returns React states to manage the data. This can be used for top level fetching of data.
+ * @example
+ * const Component = () => {
+ *    const {data, error, loading} = useFetch("/db/demo.json", {method: "GET"});
+ *
+ *    return (
+ *        <div>{data}</div>
+ *    );
+ * }
  */
 const useFetch = (url, options = {}) => {
   const [fetchDataObject, setFetchDataObject] = useState({
@@ -51,9 +27,7 @@ const useFetch = (url, options = {}) => {
   });
 
   useEffect(() => {
-    setTimeout(() => {
-      fetchData(url, setFetchDataObject, options);
-    }, 2000);
+    fetchData(url, setFetchDataObject, options);
   }, [url, options]);
 
   return fetchDataObject;
